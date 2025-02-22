@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="nokia3310-jam"
+config/name="maruvail_nokia-game-jam-7"
 config/description="This project is a template for the nokia3310 jams (https://itch.io/jam/nokiajam7)."
 config/version="2.0.0"
-config/tags=PackedStringArray("template")
+config/tags=PackedStringArray()
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=15

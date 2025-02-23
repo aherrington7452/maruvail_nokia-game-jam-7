@@ -60,6 +60,9 @@ position = Vector2(6.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_upep0")
 autoplay = "default"
 
+[node name="Sprite2D" type="Sprite2D" parent="ButtonWork"]
+position = Vector2(6.5, -0.5)
+
 [node name="ButtonCoffee" type="AnimatedSprite2D" parent="."]
 position = Vector2(6.5, 20.5)
 sprite_frames = SubResource("SpriteFrames_upep0")

@@ -1,20 +1,20 @@
 [gd_scene load_steps=9 format=3 uid="uid://qyi3rah0el5p"]
 
-[ext_resource type="Texture2D" uid="uid://c3o2ri51mw82q" path="res://sprite images/workcat1.png" id="1_w3kiw"]
-[ext_resource type="Script" path="res://scr_work_cat.gd" id="1_wh3rl"]
-[ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/workcat3.png" id="2_dgli7"]
-[ext_resource type="Texture2D" uid="uid://cg748i0no0d2b" path="res://sprite images/workcat2.png" id="3_gt414"]
+[ext_resource type="Script" path="res://scripts/scr_work_cat.gd" id="1_uqs6o"]
+[ext_resource type="Texture2D" uid="uid://c3o2ri51mw82q" path="res://sprite images/workcat1.png" id="2_e7vux"]
+[ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/workcat3.png" id="3_7348o"]
+[ext_resource type="Texture2D" uid="uid://cg748i0no0d2b" path="res://sprite images/workcat2.png" id="4_a7v0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_angf2"]
-atlas = ExtResource("1_w3kiw")
+atlas = ExtResource("2_e7vux")
 region = Rect2(0, 0, 84, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dq7wq"]
-atlas = ExtResource("2_dgli7")
+atlas = ExtResource("3_7348o")
 region = Rect2(0, 0, 84, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlnj4"]
-atlas = ExtResource("3_gt414")
+atlas = ExtResource("4_a7v0h")
 region = Rect2(0, 0, 84, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vfcb8"]
@@ -45,10 +45,10 @@ animations = [{
 }]
 
 [node name="WorkCat" type="Node2D"]
-script = ExtResource("1_wh3rl")
+script = ExtResource("1_uqs6o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(42, 24)
+position = Vector2(49, 24)
 sprite_frames = SubResource("SpriteFrames_vfcb8")
 animation = &"work"
 autoplay = "work"

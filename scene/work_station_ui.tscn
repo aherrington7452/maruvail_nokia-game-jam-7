@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://chq7q4ec0a3li"]
+
+[ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
+[ext_resource type="Texture2D" uid="uid://ctfkoml82eqri" path="res://sprite images/interactboxdefault.png" id="1_3xkee"]
+[ext_resource type="Texture2D" uid="uid://cfrc6ektqd41q" path="res://sprite images/interactboxselect.png" id="2_8d35j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgf18"]
+atlas = ExtResource("1_3xkee")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adpvk"]
+atlas = ExtResource("2_8d35j")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upep0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgf18")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adpvk")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 5.0
+}]
+
+[node name="WorkStationUI" type="Node2D"]
+script = ExtResource("1_0a8c3")
+
+[node name="ButtonWork" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_upep0")
+animation = &"selected"
+autoplay = "default"
+
+[node name="ButtonCoffee" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_upep0")
+animation = &"selected"
+autoplay = "default"
+
+[node name="ButtonSleep" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_upep0")
+animation = &"selected"
+autoplay = "default"

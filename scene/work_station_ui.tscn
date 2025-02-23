@@ -98,17 +98,17 @@ animations = [{
 [node name="WorkStationUI" type="Node2D"]
 script = ExtResource("1_0a8c3")
 
-[node name="StatesLabelOutline" type="AnimatedSprite2D" parent="."]
+[node name="StateLabelOutline" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, 6)
 sprite_frames = SubResource("SpriteFrames_elrlk")
 animation = &"inactive"
 autoplay = "inactive"
 
-[node name="ActionLabel" type="Sprite2D" parent="StatesLabelOutline"]
+[node name="ActionLabel" type="Sprite2D" parent="StateLabelOutline"]
 position = Vector2(-25, 0)
 texture = ExtResource("8_vstey")
 
-[node name="StateLabel" type="AnimatedSprite2D" parent="StatesLabelOutline"]
+[node name="StateLabel" type="AnimatedSprite2D" parent="StateLabelOutline"]
 sprite_frames = SubResource("SpriteFrames_7kvxp")
 animation = &"work"
 autoplay = "work"

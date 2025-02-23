@@ -8,7 +8,7 @@ var current_state : State
 func _ready():
 	current_state = State.Work
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("move_left"):
 		current_state = State.Coffee
 	elif Input.is_action_pressed("move_right"):

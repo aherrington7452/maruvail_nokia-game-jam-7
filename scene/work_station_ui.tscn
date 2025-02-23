@@ -1,22 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://chq7q4ec0a3li"]
+[gd_scene load_steps=9 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
-[ext_resource type="Texture2D" uid="uid://ctfkoml82eqri" path="res://sprite images/interactboxdefault.png" id="1_3xkee"]
-[ext_resource type="Texture2D" uid="uid://cfrc6ektqd41q" path="res://sprite images/interactboxselect.png" id="2_8d35j"]
+[ext_resource type="Texture2D" uid="uid://b7on88biyvtf2" path="res://sprite images/button_animations.png" id="2_c7cvx"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mgf18"]
-atlas = ExtResource("1_3xkee")
-region = Rect2(0, 0, 84, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg1bw"]
+atlas = ExtResource("2_c7cvx")
+region = Rect2(0, 0, 3, 3)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_adpvk"]
-atlas = ExtResource("2_8d35j")
-region = Rect2(0, 0, 84, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfi1b"]
+atlas = ExtResource("2_c7cvx")
+region = Rect2(9, 0, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehm5b"]
+atlas = ExtResource("2_c7cvx")
+region = Rect2(3, 0, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5ms7"]
+atlas = ExtResource("2_c7cvx")
+region = Rect2(6, 0, 3, 3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_upep0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mgf18")
+"texture": SubResource("AtlasTexture_hg1bw")
 }],
 "loop": true,
 "name": &"default",
@@ -24,27 +31,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_adpvk")
+"texture": SubResource("AtlasTexture_dfi1b")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehm5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5ms7")
 }],
 "loop": true,
 "name": &"selected",
-"speed": 5.0
+"speed": 2.0
 }]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x2kej"]
+load_path = "res://.godot/imported/interactboxdefault.png-31aedfcb3009f2038d32a5f390a782b7.ctex"
 
 [node name="WorkStationUI" type="Node2D"]
 script = ExtResource("1_0a8c3")
 
 [node name="ButtonWork" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.5, 5.5)
 sprite_frames = SubResource("SpriteFrames_upep0")
-animation = &"selected"
 autoplay = "default"
 
 [node name="ButtonCoffee" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.5, 20.5)
 sprite_frames = SubResource("SpriteFrames_upep0")
-animation = &"selected"
 autoplay = "default"
 
 [node name="ButtonSleep" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.5, 35.5)
 sprite_frames = SubResource("SpriteFrames_upep0")
-animation = &"selected"
 autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(42, 24)
+texture = SubResource("CompressedTexture2D_x2kej")

@@ -22,14 +22,14 @@ func _process(delta):
 
 func button_animation():
 	if current_state == State.Work:
-		button_work.play("selected")
+		button_work.play("pressed")
 		button_coffee.play("default")
 		button_sleep.play("default")
 	elif current_state == State.Coffee:
 		button_work.play("default")
-		button_coffee.play("selected")
+		button_coffee.play("pressed")
 		button_sleep.play("default")
 	elif current_state == State.Sleep:
 		button_work.play("default")
 		button_coffee.play("default")
-		button_sleep.play("selected")
+		button_sleep.play("pressed")

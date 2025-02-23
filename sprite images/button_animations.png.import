@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfrc6ektqd41q"
-path="res://.godot/imported/interactboxselect.png-604993e812bd368293a7dfa3a2e4d90e.ctex"
+uid="uid://b7on88biyvtf2"
+path="res://.godot/imported/button_animations.png-f443b11083a841126f86feeeed021403.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/interactboxselect.png"
-dest_files=["res://.godot/imported/interactboxselect.png-604993e812bd368293a7dfa3a2e4d90e.ctex"]
+source_file="res://sprite images/button_animations.png"
+dest_files=["res://.godot/imported/button_animations.png-f443b11083a841126f86feeeed021403.ctex"]
 
 [params]
 

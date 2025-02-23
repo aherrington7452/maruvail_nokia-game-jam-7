@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctfkoml82eqri"
-path="res://.godot/imported/interactboxdefault.png-31aedfcb3009f2038d32a5f390a782b7.ctex"
+uid="uid://g6fyybk3edrk"
+path="res://.godot/imported/button_default.png-7a252ddb919e7f5c3e84bc056caf9d74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/interactboxdefault.png"
-dest_files=["res://.godot/imported/interactboxdefault.png-31aedfcb3009f2038d32a5f390a782b7.ctex"]
+source_file="res://sprite images/button_default.png"
+dest_files=["res://.godot/imported/button_default.png-7a252ddb919e7f5c3e84bc056caf9d74.ctex"]
 
 [params]
 

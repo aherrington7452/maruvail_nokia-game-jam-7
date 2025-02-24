@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chq7q4ec0a3li"]
+[gd_scene load_steps=25 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
 [ext_resource type="Texture2D" uid="uid://dkc2v42qrqbub" path="res://sprite images/states/work_label.png" id="3_t6qnu"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://l2f0fi1ske1b" path="res://sprite images/states/sleep_label.png" id="5_ygrbs"]
 [ext_resource type="Texture2D" uid="uid://buwknejagrr2m" path="res://sprite images/states/active_state_animation.png" id="6_uyis4"]
 [ext_resource type="Texture2D" uid="uid://d1yp2ihla5x5t" path="res://sprite images/states/inactive_state.png" id="7_wvk8g"]
+[ext_resource type="Texture2D" uid="uid://c3o2ri51mw82q" path="res://sprite images/workcat_coffee.png" id="8_eyipf"]
 [ext_resource type="Texture2D" uid="uid://b2m38a7c5pmft" path="res://sprite images/states/action_label.png" id="8_vstey"]
+[ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/workcat_sleep.png" id="9_i03vb"]
+[ext_resource type="Texture2D" uid="uid://cg748i0no0d2b" path="res://sprite images/workcat_work.png" id="10_wcccr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o5oy7"]
 atlas = ExtResource("6_uyis4")
@@ -95,6 +98,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_angf2"]
+atlas = ExtResource("8_eyipf")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq7wq"]
+atlas = ExtResource("9_i03vb")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlnj4"]
+atlas = ExtResource("10_wcccr")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqutr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_angf2")
+}],
+"loop": true,
+"name": &"coffee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq7wq")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlnj4")
+}],
+"loop": true,
+"name": &"work",
+"speed": 5.0
+}]
+
 [node name="WorkStationUI" type="Node2D"]
 script = ExtResource("1_0a8c3")
 
@@ -110,5 +152,11 @@ texture = ExtResource("8_vstey")
 
 [node name="StateLabel" type="AnimatedSprite2D" parent="StateLabelOutline"]
 sprite_frames = SubResource("SpriteFrames_7kvxp")
+animation = &"work"
+autoplay = "work"
+
+[node name="WorkCat" type="AnimatedSprite2D" parent="."]
+position = Vector2(59, 37)
+sprite_frames = SubResource("SpriteFrames_iqutr")
 animation = &"work"
 autoplay = "work"

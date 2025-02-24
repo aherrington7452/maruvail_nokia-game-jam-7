@@ -1,10 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1ghgv40hy0xi"]
+[gd_scene load_steps=2 format=3 uid="uid://c1ghgv40hy0xi"]
 
 [ext_resource type="PackedScene" uid="uid://chq7q4ec0a3li" path="res://scene/work_station_ui.tscn" id="1_wp8mv"]
-[ext_resource type="PackedScene" uid="uid://qyi3rah0el5p" path="res://scene/work_cat.tscn" id="2_boipd"]
 
 [node name="WorkStationTotal" type="Node"]
 
 [node name="WorkStationUI" parent="." instance=ExtResource("1_wp8mv")]
-
-[node name="WorkCat" parent="." instance=ExtResource("2_boipd")]

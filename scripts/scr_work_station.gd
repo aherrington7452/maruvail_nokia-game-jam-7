@@ -15,6 +15,7 @@ func _ready():
 	current_selection_state = State["Work"]
 
 func _process(_delta) -> void:
+	# cycle through states
 	if Input.is_action_just_pressed("move_up"):
 		if current_selection_state < 2:
 			current_selection_state += 1
@@ -27,6 +28,8 @@ func _process(_delta) -> void:
 			current_selection_state = 2
 	if Input.is_action_just_pressed("interact"):
 		current_state = current_selection_state
+
+	# animate based on state
 	label_animation()
 	cat_animation()
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7on88biyvtf2"
-path="res://.godot/imported/button_animations.png-f443b11083a841126f86feeeed021403.ctex"
+uid="uid://cnw6i170fu3na"
+path="res://.godot/imported/clock_animation.png-55f4fe8038812fcb565e7357d61f6b6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/button_animations.png"
-dest_files=["res://.godot/imported/button_animations.png-f443b11083a841126f86feeeed021403.ctex"]
+source_file="res://sprite images/states/clock_animation.png"
+dest_files=["res://.godot/imported/clock_animation.png-55f4fe8038812fcb565e7357d61f6b6a.ctex"]
 
 [params]
 

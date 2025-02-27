@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg748i0no0d2b"
-path="res://.godot/imported/workcat_work.png-382f84b1ced8b6887b1ed787aad48024.ctex"
+uid="uid://dllj71x2ptxlj"
+path="res://.godot/imported/workcat_sleep.png-2b91979e8a34f743fa1694b5b8d3aae5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/workcat_work.png"
-dest_files=["res://.godot/imported/workcat_work.png-382f84b1ced8b6887b1ed787aad48024.ctex"]
+source_file="res://sprite images/cat/workcat_sleep.png"
+dest_files=["res://.godot/imported/workcat_sleep.png-2b91979e8a34f743fa1694b5b8d3aae5.ctex"]
 
 [params]
 

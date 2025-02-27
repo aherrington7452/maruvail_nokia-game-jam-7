@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr7xat2hw004h"
-path="res://.godot/imported/timer_colon.png-ed7a683855dd44d2a6ff1b36101d02be.ctex"
+uid="uid://wsmlfwl5ijnw"
+path="res://.godot/imported/heart_outline.png-a134c9bc6f6d1387a9f9a43389689527.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/states/timer_colon.png"
-dest_files=["res://.godot/imported/timer_colon.png-ed7a683855dd44d2a6ff1b36101d02be.ctex"]
+source_file="res://sprite images/heart_outline.png"
+dest_files=["res://.godot/imported/heart_outline.png-a134c9bc6f6d1387a9f9a43389689527.ctex"]
 
 [params]
 

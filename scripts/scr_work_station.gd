@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var state_label: AnimatedSprite2D = $StateLabelOutline/StateLabel
-@onready var state_label_outline: AnimatedSprite2D = $StateLabelOutline
+@onready var state_label: AnimatedSprite2D = $State/Bars
+@onready var state_label_outline: AnimatedSprite2D = $State/ActiveOutline
 @onready var work_cat_animation: AnimatedSprite2D = $WorkCat
 
 #dictionary

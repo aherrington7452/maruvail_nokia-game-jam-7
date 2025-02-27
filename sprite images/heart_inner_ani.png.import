@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3o2ri51mw82q"
-path="res://.godot/imported/workcat_coffee.png-ac639016d7dd6eca285acf7978cd86da.ctex"
+uid="uid://q5fqs1ib6faa"
+path="res://.godot/imported/heart_inner_ani.png-bfd53134bafdc17cf75da8c5884f79fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/workcat_coffee.png"
-dest_files=["res://.godot/imported/workcat_coffee.png-ac639016d7dd6eca285acf7978cd86da.ctex"]
+source_file="res://sprite images/heart_inner_ani.png"
+dest_files=["res://.godot/imported/heart_inner_ani.png-bfd53134bafdc17cf75da8c5884f79fb.ctex"]
 
 [params]
 

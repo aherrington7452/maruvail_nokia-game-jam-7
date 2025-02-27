@@ -1,6 +1,7 @@
-[gd_scene load_steps=137 format=3 uid="uid://chq7q4ec0a3li"]
+[gd_scene load_steps=142 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
+[ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/day_counter_ani.png" id="2_tlhmq"]
 [ext_resource type="Texture2D" uid="uid://c3o2ri51mw82q" path="res://sprite images/cat/workcat_coffee.png" id="8_eyipf"]
 [ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/cat/workcat_sleep.png" id="9_i03vb"]
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
@@ -12,6 +13,35 @@
 [ext_resource type="Texture2D" uid="uid://bsdmj0ultnxp6" path="res://sprite images/states/work_bar_animation_full.png" id="12_vpi4a"]
 [ext_resource type="Texture2D" uid="uid://cnw6i170fu3na" path="res://sprite images/clock_animation.png" id="13_ew5o5"]
 [ext_resource type="Texture2D" uid="uid://dr7xat2hw004h" path="res://sprite images/timer_colon.png" id="14_tasil"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbxxp"]
+atlas = ExtResource("2_tlhmq")
+region = Rect2(0, 0, 17, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loamd"]
+atlas = ExtResource("2_tlhmq")
+region = Rect2(17, 0, 17, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n5y3"]
+atlas = ExtResource("2_tlhmq")
+region = Rect2(34, 0, 17, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olmsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbxxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loamd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n5y3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvldc"]
 atlas = ExtResource("13_ew5o5")
@@ -918,8 +948,14 @@ animations = [{
 [node name="WorkStationUI" type="Node2D"]
 script = ExtResource("1_0a8c3")
 
+[node name="DayCounter" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 4)
+sprite_frames = SubResource("SpriteFrames_olmsm")
+autoplay = "default"
+frame_progress = 0.429467
+
 [node name="Clock" type="AnimatedSprite2D" parent="."]
-position = Vector2(34, 8)
+position = Vector2(11, 9)
 sprite_frames = SubResource("SpriteFrames_u6t1a")
 autoplay = "default"
 frame_progress = 0.387598
@@ -932,29 +968,29 @@ frame_progress = 0.913456
 [node name="State" type="Node" parent="."]
 
 [node name="Bars" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 7)
+position = Vector2(64, 7.5)
 sprite_frames = SubResource("SpriteFrames_fadlw")
 animation = &"work"
 autoplay = "work"
 
 [node name="ActiveOutline" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 7)
+position = Vector2(64, 7.5)
 sprite_frames = SubResource("SpriteFrames_mfdv3")
 animation = &"active"
 autoplay = "active"
 frame_progress = 0.64603
 
 [node name="WorkCat" type="AnimatedSprite2D" parent="."]
-position = Vector2(43, 37)
+position = Vector2(28, 37)
 sprite_frames = SubResource("SpriteFrames_iqutr")
 animation = &"coffee"
 autoplay = "work"
 
 [node name="Health" type="Sprite2D" parent="."]
-position = Vector2(9, 8)
+position = Vector2(36, 8)
 texture = ExtResource("11_4iboh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Health"]
+[node name="HealthInner" type="AnimatedSprite2D" parent="Health"]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_tqedy")
 autoplay = "default"

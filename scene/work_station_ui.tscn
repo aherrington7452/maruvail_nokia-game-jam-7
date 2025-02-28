@@ -1,17 +1,19 @@
-[gd_scene load_steps=142 format=3 uid="uid://chq7q4ec0a3li"]
+[gd_scene load_steps=153 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
 [ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/day_counter_ani.png" id="2_tlhmq"]
-[ext_resource type="Texture2D" uid="uid://c3o2ri51mw82q" path="res://sprite images/cat/workcat_coffee.png" id="8_eyipf"]
 [ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/cat/workcat_sleep.png" id="9_i03vb"]
+[ext_resource type="Texture2D" uid="uid://ddvn6q7mbi6jk" path="res://sprite images/cat/drinking_animation_bare.png" id="9_of765"]
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
-[ext_resource type="Texture2D" uid="uid://cg748i0no0d2b" path="res://sprite images/cat/workcat_work.png" id="10_wcccr"]
 [ext_resource type="Texture2D" uid="uid://b1vtnt8py6qnt" path="res://sprite images/states/battery_animation.png" id="10_xb5ia"]
 [ext_resource type="Texture2D" uid="uid://wsmlfwl5ijnw" path="res://sprite images/heart_outline.png" id="11_4iboh"]
+[ext_resource type="Texture2D" uid="uid://ca0mhugqyx13b" path="res://sprite images/cat/working_animation_bare.png" id="11_fblcy"]
+[ext_resource type="Texture2D" uid="uid://c1ajt01c62km" path="res://sprite images/cat/desk_bare.png" id="12_5ight"]
 [ext_resource type="Texture2D" uid="uid://q5fqs1ib6faa" path="res://sprite images/heart_inner_ani.png" id="12_ibvke"]
 [ext_resource type="Texture2D" uid="uid://8ayplsjgr11s" path="res://sprite images/states/coffee_animation.png" id="12_mp3it"]
 [ext_resource type="Texture2D" uid="uid://bsdmj0ultnxp6" path="res://sprite images/states/work_bar_animation_full.png" id="12_vpi4a"]
 [ext_resource type="Texture2D" uid="uid://cnw6i170fu3na" path="res://sprite images/clock_animation.png" id="13_ew5o5"]
+[ext_resource type="Texture2D" uid="uid://jfvxacdxgke1" path="res://sprite images/cat/cat_BG.png" id="13_wcjkg"]
 [ext_resource type="Texture2D" uid="uid://dr7xat2hw004h" path="res://sprite images/timer_colon.png" id="14_tasil"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbxxp"]
@@ -814,27 +816,69 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_angf2"]
-atlas = ExtResource("8_eyipf")
-region = Rect2(0, 0, 84, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdgnb"]
+atlas = ExtResource("9_of765")
+region = Rect2(0, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j30pk"]
+atlas = ExtResource("9_of765")
+region = Rect2(27, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynpep"]
+atlas = ExtResource("9_of765")
+region = Rect2(54, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dq7wq"]
 atlas = ExtResource("9_i03vb")
 region = Rect2(0, 0, 84, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dlnj4"]
-atlas = ExtResource("10_wcccr")
-region = Rect2(0, 0, 84, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_65x4x"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(0, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqcox"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(24, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mvoi"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(48, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pius"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(72, 0, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o57hl"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(0, 27, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ads24"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(24, 27, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cca85"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(48, 27, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80hpe"]
+atlas = ExtResource("11_fblcy")
+region = Rect2(72, 27, 24, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iqutr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_angf2")
+"texture": SubResource("AtlasTexture_tdgnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j30pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynpep")
 }],
 "loop": true,
 "name": &"coffee",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -846,11 +890,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dlnj4")
+"texture": SubResource("AtlasTexture_65x4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqcox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mvoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pius")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o57hl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ads24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cca85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80hpe")
 }],
 "loop": true,
 "name": &"work",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kravb"]
@@ -981,10 +1046,19 @@ autoplay = "active"
 frame_progress = 0.64603
 
 [node name="WorkCat" type="AnimatedSprite2D" parent="."]
-position = Vector2(28, 37)
+position = Vector2(18, 32)
 sprite_frames = SubResource("SpriteFrames_iqutr")
 animation = &"coffee"
 autoplay = "work"
+frame_progress = 0.124749
+
+[node name="Desk" type="Sprite2D" parent="WorkCat"]
+position = Vector2(7, 5)
+texture = ExtResource("12_5ight")
+
+[node name="BG" type="Sprite2D" parent="WorkCat"]
+z_index = -1
+texture = ExtResource("13_wcjkg")
 
 [node name="Health" type="Sprite2D" parent="."]
 position = Vector2(36, 8)

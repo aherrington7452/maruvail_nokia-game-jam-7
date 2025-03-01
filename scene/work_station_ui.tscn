@@ -1056,11 +1056,11 @@ frame_progress = 0.913456
 [node name="Bars" type="AnimatedSprite2D" parent="State"]
 position = Vector2(64, 8)
 sprite_frames = SubResource("SpriteFrames_fadlw")
-animation = &"work"
+animation = &"coffee"
 autoplay = "work"
 
 [node name="ActiveOutline" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 7.5)
+position = Vector2(64, 8)
 sprite_frames = SubResource("SpriteFrames_mfdv3")
 animation = &"active"
 autoplay = "active"
@@ -1090,3 +1090,21 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_tqedy")
 autoplay = "default"
 frame_progress = 0.368647
+
+[node name="ClockTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CoffeeTimer" type="Timer" parent="."]
+
+[node name="WorkTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="timeout" from="CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
+[connection signal="timeout" from="WorkTimer" to="." method="_on_work_timer_timeout"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]

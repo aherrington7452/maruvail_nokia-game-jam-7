@@ -1096,6 +1096,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="CoffeeTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="WorkTimer" type="Timer" parent="."]
 wait_time = 4.0

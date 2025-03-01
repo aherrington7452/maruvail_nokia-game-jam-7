@@ -1,5 +1,7 @@
 extends Node2D
 
+#region Set Up Variables
+
 @onready var state_label: AnimatedSprite2D = $State/Bars
 @onready var state_label_outline: AnimatedSprite2D = $State/ActiveOutline
 @onready var work_cat_animation: AnimatedSprite2D = $WorkCat
@@ -39,6 +41,7 @@ var StateValue = { "Work": 0, "Energy": 0, "Health": 0 } # value = frame of anim
 
 var current_state
 var current_selection_state 
+#endregion
 
 func _ready():
 	current_state = State["Work"]
@@ -133,9 +136,6 @@ func update_bar_progress():
 		# If energy is full, player is no longer forced to sleep
 		if StateValue["Energy"] == sleep_bar_min_frames:
 			player_sleeping = false
-		#if energy is full, you can still sleep (to regain health?)
-		#TODO may want to put something here to auto switch off sleep once energy is full (to work)
-		# letting the player choose to sleep the whole time could be funny though
 		drain_energy_timer.paused = true
 		gain_health_timer.paused = false
 		work_timer.paused = true
@@ -215,7 +215,7 @@ func _on_drain_health_timer_timeout() -> void:
 			StateValue["Health"] += health_drain_rate
 	elif current_state == State.Coffee:
 		if StateValue["Health"] < health_max_frames:
-			StateValue["Health"] += health_drain_rate + 1
+			StateValue["Health"] += health_drain_rate
 
 func _on_gain_health_timer_timeout() -> void:
 	gain_health_timer_ongoing = false

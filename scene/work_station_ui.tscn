@@ -1104,7 +1104,11 @@ one_shot = true
 [node name="SleepTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="DrainEnergyTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
 [connection signal="timeout" from="WorkTimer" to="." method="_on_work_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
+[connection signal="timeout" from="DrainEnergyTimer" to="." method="_on_drain_energy_timer_timeout"]

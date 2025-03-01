@@ -7,21 +7,31 @@ extends Node2D
 @onready var work_timer: Timer = $WorkTimer
 var work_bar_max_frames = 20 # 21 total
 var work_timer_ongoing = false
+
 @onready var sleep_timer: Timer = $SleepTimer
-var sleep_bar_max_frames = 18 # 19 total
+var sleep_bar_min_frames = 0
 var sleep_timer_ongoing = false
+var player_sleeping : bool  = false # Player forced to sleep until energy full
+
 @onready var coffee_timer: Timer = $CoffeeTimer
-var coffee_bar_max_frames = 18 # 19 total
+var coffee_bar_min_frames = 0
 var coffee_timer_ongoing = false
+
+# for coffee and sleep timers
+var energy_max_frames = 18 # 19 total
+
+@onready var drain_energy_timer: Timer = $DrainEnergyTimer
+var drain_energy_timer_ongoing : bool = false
+var energy_drain_rate = 1 # must divide evenly into 18
 
 @onready var clock: AnimatedSprite2D = $Clock
 
-#dictionary
+#dictionaries
 var State = { "Work": 0, "Coffee": 1, "Sleep": 2 }
 var StateValue = { "Work": 0, "Energy": 0, "Health": 0 } # value = frame of animation
 
 var current_state
-var current_selection_state
+var current_selection_state 
 
 func _ready():
 	current_state = State["Work"]
@@ -29,11 +39,18 @@ func _ready():
 
 func _process(_delta) -> void:
 	player_input()
+	drain_energy()
 	update_bar_progress()
 
 	# animate based on state
 	label_animation()
 	cat_animation()
+
+func drain_energy():
+	if current_state == State.Work:
+		if drain_energy_timer_ongoing == false:
+			drain_energy_timer_ongoing = true
+			drain_energy_timer.start(drain_energy_timer.wait_time)
 
 func player_input():
 	# cycle through states
@@ -47,21 +64,31 @@ func player_input():
 			current_selection_state -= 1
 		elif current_selection_state == 0:
 			current_selection_state = 2
-	if Input.is_action_just_pressed("interact"):
-		current_state = current_selection_state
+	if player_sleeping == false:
+		if Input.is_action_just_pressed("interact"):
+			current_state = current_selection_state
+			if current_state == State.Sleep:
+				player_sleeping = true
+	else: #if player is sleeping
+		current_state = State.Sleep
 
 func update_bar_progress():
 	if current_state == State.Work:
-		#pause all other bar timers
-		coffee_timer.paused = true
-		sleep_timer.paused = true
-		work_timer.paused = false
-		if work_timer_ongoing == false:
-			#get timer and start it
-			work_timer_ongoing = true
-
-			work_timer.start(work_timer.wait_time)
+		#If energy is drained, can't work, forced to sleep
+		if StateValue["Energy"] == energy_max_frames:
+			player_sleeping = true
+		else:
+			#pause all other bar timers, resume draining energy
+			drain_energy_timer.paused = false
+			coffee_timer.paused = true
+			sleep_timer.paused = true
+			work_timer.paused = false
+			if work_timer_ongoing == false:
+				#get timer and start it
+				work_timer_ongoing = true
+				work_timer.start(work_timer.wait_time)
 	if current_state == State.Coffee:
+		drain_energy_timer.paused = true
 		work_timer.paused = true
 		sleep_timer.paused = true
 		coffee_timer.paused = false
@@ -70,13 +97,19 @@ func update_bar_progress():
 			coffee_timer_ongoing = true
 			coffee_timer.start(coffee_timer.wait_time)
 	if current_state == State.Sleep:
+		# If energy is full, player is no longer forced to sleep
+		if StateValue["Energy"] == sleep_bar_min_frames:
+			player_sleeping = false
+		#if energy is full, you can still sleep (to regain health?)
+		#TODO may want to put something here to auto switch off sleep once energy is full (to work)
+		# letting the player choose to sleep the whole time could be funny though
+		drain_energy_timer.paused = true
 		work_timer.paused = true
 		coffee_timer.paused = true
 		sleep_timer.paused = false
 		if sleep_timer_ongoing == false:
 			#get timer and start it
 			sleep_timer_ongoing = true
-
 			sleep_timer.start(sleep_timer.wait_time)
 
 func label_animation():
@@ -122,14 +155,20 @@ func _on_work_timer_timeout() -> void:
 
 func _on_coffee_timer_timeout() -> void:
 	coffee_timer_ongoing = false
-	if StateValue["Energy"] < coffee_bar_max_frames:
-		StateValue["Energy"] += 1
+	if StateValue["Energy"] > coffee_bar_min_frames:
+		StateValue["Energy"] -= 1
 	else:
-		StateValue["Energy"] = coffee_bar_max_frames
+		StateValue["Energy"] = coffee_bar_min_frames
 
 func _on_sleep_timer_timeout() -> void:
 	sleep_timer_ongoing = false
-	if StateValue["Energy"] < sleep_bar_max_frames:
-		StateValue["Energy"] += 1
+	if StateValue["Energy"] > sleep_bar_min_frames:
+		StateValue["Energy"] -= 1
 	else:
-		StateValue["Energy"] = sleep_bar_max_frames
+		StateValue["Energy"] = sleep_bar_min_frames
+
+func _on_drain_energy_timer_timeout() -> void:
+	drain_energy_timer_ongoing = false
+	#DECREASE ENERGY WHILE WORKING
+	if StateValue["Energy"] < energy_max_frames:
+		StateValue["Energy"] += energy_drain_rate

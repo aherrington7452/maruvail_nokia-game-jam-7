@@ -1,10 +1,10 @@
-[gd_scene load_steps=153 format=3 uid="uid://chq7q4ec0a3li"]
+[gd_scene load_steps=156 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
 [ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/day_counter_ani.png" id="2_tlhmq"]
-[ext_resource type="Texture2D" uid="uid://dllj71x2ptxlj" path="res://sprite images/cat/workcat_sleep.png" id="9_i03vb"]
 [ext_resource type="Texture2D" uid="uid://ddvn6q7mbi6jk" path="res://sprite images/cat/drinking_animation_bare.png" id="9_of765"]
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
+[ext_resource type="Texture2D" uid="uid://cuvjyhqfsrlpp" path="res://sprite images/cat/sleeping_animation.png" id="10_pkvy2"]
 [ext_resource type="Texture2D" uid="uid://b1vtnt8py6qnt" path="res://sprite images/states/battery_animation.png" id="10_xb5ia"]
 [ext_resource type="Texture2D" uid="uid://wsmlfwl5ijnw" path="res://sprite images/heart_outline.png" id="11_4iboh"]
 [ext_resource type="Texture2D" uid="uid://ca0mhugqyx13b" path="res://sprite images/cat/working_animation_bare.png" id="11_fblcy"]
@@ -828,9 +828,21 @@ region = Rect2(27, 0, 27, 29)
 atlas = ExtResource("9_of765")
 region = Rect2(54, 0, 27, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dq7wq"]
-atlas = ExtResource("9_i03vb")
-region = Rect2(0, 0, 84, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvs2a"]
+atlas = ExtResource("10_pkvy2")
+region = Rect2(0, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xprqe"]
+atlas = ExtResource("10_pkvy2")
+region = Rect2(27, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mteiw"]
+atlas = ExtResource("10_pkvy2")
+region = Rect2(54, 0, 27, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns5dw"]
+atlas = ExtResource("10_pkvy2")
+region = Rect2(81, 0, 27, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65x4x"]
 atlas = ExtResource("11_fblcy")
@@ -882,11 +894,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dq7wq")
+"texture": SubResource("AtlasTexture_fvs2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xprqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mteiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns5dw")
 }],
 "loop": true,
 "name": &"sleep",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1033,7 +1054,7 @@ frame_progress = 0.913456
 [node name="State" type="Node" parent="."]
 
 [node name="Bars" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 7.5)
+position = Vector2(64, 8)
 sprite_frames = SubResource("SpriteFrames_fadlw")
 animation = &"work"
 autoplay = "work"
@@ -1050,7 +1071,7 @@ position = Vector2(18, 32)
 sprite_frames = SubResource("SpriteFrames_iqutr")
 animation = &"coffee"
 autoplay = "work"
-frame_progress = 0.124749
+frame_progress = 0.927504
 
 [node name="Desk" type="Sprite2D" parent="WorkCat"]
 position = Vector2(7, 5)

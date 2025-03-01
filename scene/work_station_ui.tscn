@@ -1028,7 +1028,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 0.0
 }]
 
 [node name="WorkStationUI" type="Node2D"]
@@ -1098,7 +1098,7 @@ autostart = true
 [node name="CoffeeTimer" type="Timer" parent="."]
 
 [node name="WorkTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="SleepTimer" type="Timer" parent="."]
@@ -1107,8 +1107,18 @@ wait_time = 2.0
 [node name="DrainEnergyTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DrainHealthTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="GainHealthTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
 [connection signal="timeout" from="WorkTimer" to="." method="_on_work_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
 [connection signal="timeout" from="DrainEnergyTimer" to="." method="_on_drain_energy_timer_timeout"]
+[connection signal="timeout" from="DrainHealthTimer" to="." method="_on_drain_health_timer_timeout"]
+[connection signal="timeout" from="GainHealthTimer" to="." method="_on_gain_health_timer_timeout"]

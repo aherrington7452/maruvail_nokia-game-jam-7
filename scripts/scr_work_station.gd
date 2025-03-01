@@ -17,12 +17,19 @@ var player_sleeping : bool  = false # Player forced to sleep until energy full
 var coffee_bar_min_frames = 0
 var coffee_timer_ongoing = false
 
-# for coffee and sleep timers
-var energy_max_frames = 18 # 19 total
-
 @onready var drain_energy_timer: Timer = $DrainEnergyTimer
+var energy_max_frames = 18 # 19 total
 var drain_energy_timer_ongoing : bool = false
 var energy_drain_rate = 1 # must divide evenly into 18
+
+@onready var drain_health_timer: Timer = $DrainHealthTimer
+@onready var gain_health_timer: Timer = $GainHealthTimer
+@onready var health_inner: AnimatedSprite2D = $Health/HealthInner
+var health_max_frames = 11 # 12 total
+var drain_health_timer_ongoing : bool = false
+var health_drain_rate = 1 # must divide evenly into 11, so only 1 is viable
+var gain_health_timer_ongoing : bool = false
+var health_gain_rate = 1 # must divide evenly into 11, so only 1 is viable
 
 @onready var clock: AnimatedSprite2D = $Clock
 
@@ -39,12 +46,36 @@ func _ready():
 
 func _process(_delta) -> void:
 	player_input()
+	gain_health()
+	drain_health()
 	drain_energy()
 	update_bar_progress()
 
 	# animate based on state
+	health_animation()
 	label_animation()
 	cat_animation()
+
+func gain_health():
+	if current_state == State.Sleep:
+		if gain_health_timer_ongoing == false:
+			gain_health_timer_ongoing = true
+			gain_health_timer.start(gain_health_timer.wait_time)
+
+func drain_health():
+	if current_state == State.Work:
+		if drain_health_timer_ongoing == false:
+			drain_health_timer_ongoing = true
+			drain_health_timer.start(drain_health_timer.wait_time)
+	elif current_state == State.Coffee:
+		if drain_health_timer_ongoing == false:
+			drain_health_timer_ongoing = true
+			drain_health_timer.start(drain_health_timer.wait_time)
+
+func health_animation():
+	health_inner.frame = StateValue["Health"]
+	if StateValue["Health"] == health_max_frames:
+		pass #TODO end game by BURNOUT
 
 func drain_energy():
 	if current_state == State.Work:
@@ -80,6 +111,7 @@ func update_bar_progress():
 		else:
 			#pause all other bar timers, resume draining energy
 			drain_energy_timer.paused = false
+			gain_health_timer.paused = true
 			coffee_timer.paused = true
 			sleep_timer.paused = true
 			work_timer.paused = false
@@ -89,6 +121,7 @@ func update_bar_progress():
 				work_timer.start(work_timer.wait_time)
 	if current_state == State.Coffee:
 		drain_energy_timer.paused = true
+		gain_health_timer.paused = true
 		work_timer.paused = true
 		sleep_timer.paused = true
 		coffee_timer.paused = false
@@ -104,6 +137,7 @@ func update_bar_progress():
 		#TODO may want to put something here to auto switch off sleep once energy is full (to work)
 		# letting the player choose to sleep the whole time could be funny though
 		drain_energy_timer.paused = true
+		gain_health_timer.paused = false
 		work_timer.paused = true
 		coffee_timer.paused = true
 		sleep_timer.paused = false
@@ -169,6 +203,21 @@ func _on_sleep_timer_timeout() -> void:
 
 func _on_drain_energy_timer_timeout() -> void:
 	drain_energy_timer_ongoing = false
-	#DECREASE ENERGY WHILE WORKING
 	if StateValue["Energy"] < energy_max_frames:
 		StateValue["Energy"] += energy_drain_rate
+
+func _on_drain_health_timer_timeout() -> void:
+	drain_health_timer_ongoing = false
+	# The if-block is unnecessary but it leaves open the option to have
+	#work and coffee drain health at different rates
+	if current_state == State.Work:
+		if StateValue["Health"] < health_max_frames:
+			StateValue["Health"] += health_drain_rate
+	elif current_state == State.Coffee:
+		if StateValue["Health"] < health_max_frames:
+			StateValue["Health"] += health_drain_rate + 1
+
+func _on_gain_health_timer_timeout() -> void:
+	gain_health_timer_ongoing = false
+	if StateValue["Health"] < health_max_frames:
+			StateValue["Health"] -= health_drain_rate

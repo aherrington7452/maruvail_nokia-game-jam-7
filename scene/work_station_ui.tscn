@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/day_counter_ani.png" id="2_tlhmq"]
 [ext_resource type="Texture2D" uid="uid://ddvn6q7mbi6jk" path="res://sprite images/cat/drinking_animation_bare.png" id="9_of765"]
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
-[ext_resource type="Texture2D" uid="uid://cuvjyhqfsrlpp" path="res://sprite images/cat/sleeping_animation.png" id="10_pkvy2"]
+[ext_resource type="Texture2D" uid="uid://s5l8cf58plxd" path="res://sprite images/cat/sleeping_animation.png" id="10_pkvy2"]
 [ext_resource type="Texture2D" uid="uid://b1vtnt8py6qnt" path="res://sprite images/states/battery_animation.png" id="10_xb5ia"]
 [ext_resource type="Texture2D" uid="uid://wsmlfwl5ijnw" path="res://sprite images/heart_outline.png" id="11_4iboh"]
 [ext_resource type="Texture2D" uid="uid://ca0mhugqyx13b" path="res://sprite images/cat/working_animation_bare.png" id="11_fblcy"]
@@ -828,19 +828,19 @@ region = Rect2(27, 0, 27, 29)
 atlas = ExtResource("9_of765")
 region = Rect2(54, 0, 27, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvs2a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kyym"]
 atlas = ExtResource("10_pkvy2")
 region = Rect2(0, 0, 27, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xprqe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_otfa2"]
 atlas = ExtResource("10_pkvy2")
 region = Rect2(27, 0, 27, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mteiw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubr2d"]
 atlas = ExtResource("10_pkvy2")
 region = Rect2(54, 0, 27, 29)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ns5dw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_teyix"]
 atlas = ExtResource("10_pkvy2")
 region = Rect2(81, 0, 27, 29)
 
@@ -894,16 +894,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fvs2a")
+"texture": SubResource("AtlasTexture_5kyym")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xprqe")
+"texture": SubResource("AtlasTexture_otfa2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mteiw")
+"texture": SubResource("AtlasTexture_ubr2d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ns5dw")
+"texture": SubResource("AtlasTexture_teyix")
 }],
 "loop": true,
 "name": &"sleep",
@@ -1035,13 +1035,13 @@ animations = [{
 script = ExtResource("1_0a8c3")
 
 [node name="DayCounter" type="AnimatedSprite2D" parent="."]
-position = Vector2(11, 4)
+position = Vector2(11, 5)
 sprite_frames = SubResource("SpriteFrames_olmsm")
 autoplay = "default"
 frame_progress = 0.429467
 
 [node name="Clock" type="AnimatedSprite2D" parent="."]
-position = Vector2(11, 9)
+position = Vector2(11, 11)
 sprite_frames = SubResource("SpriteFrames_u6t1a")
 autoplay = "default"
 frame_progress = 0.387598
@@ -1054,24 +1054,23 @@ frame_progress = 0.913456
 [node name="State" type="Node" parent="."]
 
 [node name="Bars" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 8)
+position = Vector2(69, 8)
 sprite_frames = SubResource("SpriteFrames_fadlw")
-animation = &"coffee"
+animation = &"work"
 autoplay = "work"
 
 [node name="ActiveOutline" type="AnimatedSprite2D" parent="State"]
-position = Vector2(64, 8)
+position = Vector2(69, 8)
 sprite_frames = SubResource("SpriteFrames_mfdv3")
 animation = &"active"
 autoplay = "active"
-frame_progress = 0.64603
 
 [node name="WorkCat" type="AnimatedSprite2D" parent="."]
 position = Vector2(18, 32)
 sprite_frames = SubResource("SpriteFrames_iqutr")
-animation = &"coffee"
+animation = &"work"
 autoplay = "work"
-frame_progress = 0.927504
+frame_progress = 0.948907
 
 [node name="Desk" type="Sprite2D" parent="WorkCat"]
 position = Vector2(7, 5)
@@ -1079,13 +1078,15 @@ texture = ExtResource("12_5ight")
 
 [node name="BG" type="Sprite2D" parent="WorkCat"]
 z_index = -1
+position = Vector2(24, 0)
+scale = Vector2(2.6, 1)
 texture = ExtResource("13_wcjkg")
 
-[node name="Health" type="Sprite2D" parent="."]
-position = Vector2(36, 8)
+[node name="HealthOutline" type="Sprite2D" parent="."]
+position = Vector2(39, 8)
 texture = ExtResource("11_4iboh")
 
-[node name="HealthInner" type="AnimatedSprite2D" parent="Health"]
+[node name="HealthInner" type="AnimatedSprite2D" parent="HealthOutline"]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_tqedy")
 autoplay = "default"

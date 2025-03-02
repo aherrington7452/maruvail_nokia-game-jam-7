@@ -6,7 +6,7 @@ func _on_heart_animation_finished() -> void:
 	$Heart.hide()
 	$GameOver.show()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 			#Takes player back to main game scene, skips title and intro
 			var instance = scene.instantiate()

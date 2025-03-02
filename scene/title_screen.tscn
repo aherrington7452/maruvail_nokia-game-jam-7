@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://cyss75qcl81w"]
+
+[ext_resource type="Script" path="res://scene/title_screen.gd" id="1_4lnxg"]
+[ext_resource type="Texture2D" uid="uid://da6d3hyrrelu7" path="res://sprite images/titleScreen/titlescreensleeping.png" id="2_ipfus"]
+[ext_resource type="Texture2D" uid="uid://cxbxa614eytjg" path="res://sprite images/titleScreen/titlescreenAwake.png" id="2_nqtjh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh3c6"]
+atlas = ExtResource("2_nqtjh")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uto2"]
+atlas = ExtResource("2_nqtjh")
+region = Rect2(84, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7es1h"]
+atlas = ExtResource("2_nqtjh")
+region = Rect2(168, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtbms"]
+atlas = ExtResource("2_nqtjh")
+region = Rect2(252, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qwh"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srmwy"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(84, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvi76"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(168, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4mib"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(252, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwmc4"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(336, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w3ob"]
+atlas = ExtResource("2_ipfus")
+region = Rect2(420, 0, 84, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_imiln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yh3c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uto2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7es1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtbms")
+}],
+"loop": false,
+"name": &"awake",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46qwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srmwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvi76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4mib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwmc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w3ob")
+}],
+"loop": true,
+"name": &"sleeping",
+"speed": 5.0
+}]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_4lnxg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, 24)
+sprite_frames = SubResource("SpriteFrames_imiln")
+animation = &"awake"
+autoplay = "sleeping"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

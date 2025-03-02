@@ -2,38 +2,38 @@ extends Node2D
 
 #region Set Up Variables
 
-@onready var state_label: AnimatedSprite2D = $State/Bars
-@onready var state_label_outline: AnimatedSprite2D = $State/ActiveOutline
-@onready var work_cat_animation: AnimatedSprite2D = $WorkCat
+@onready var state_label: AnimatedSprite2D = $Node/State/Bars
+@onready var state_label_outline: AnimatedSprite2D =  $Node/State/ActiveOutline
+@onready var work_cat_animation: AnimatedSprite2D = $Node/WorkCat
 
-@onready var work_timer: Timer = $WorkTimer
+@onready var work_timer: Timer = $Node/WorkTimer
 var work_bar_max_frames = 20 # 21 total
 var work_timer_ongoing = false
 
-@onready var sleep_timer: Timer = $SleepTimer
+@onready var sleep_timer: Timer = $Node/SleepTimer
 var sleep_bar_min_frames = 0
 var sleep_timer_ongoing = false
 var player_sleeping : bool  = false # Player forced to sleep until energy full
 
-@onready var coffee_timer: Timer = $CoffeeTimer
+@onready var coffee_timer: Timer = $Node/CoffeeTimer
 var coffee_bar_min_frames = 0
 var coffee_timer_ongoing = false
 
-@onready var drain_energy_timer: Timer = $DrainEnergyTimer
+@onready var drain_energy_timer: Timer = $Node/DrainEnergyTimer
 var energy_max_frames = 18 # 19 total
 var drain_energy_timer_ongoing : bool = false
 var energy_drain_rate = 1 # must divide evenly into 18
 
-@onready var drain_health_timer: Timer = $DrainHealthTimer
-@onready var gain_health_timer: Timer = $GainHealthTimer
-@onready var health_inner: AnimatedSprite2D = $HealthOutline/HealthInner
+@onready var drain_health_timer: Timer = $Node/DrainHealthTimer
+@onready var gain_health_timer: Timer = $Node/GainHealthTimer
+@onready var health_inner: AnimatedSprite2D = $Node/HealthOutline/HealthInner
 var health_max_frames = 11 # 12 total
 var drain_health_timer_ongoing : bool = false
 var health_drain_rate = 1 # must divide evenly into 11, so only 1 is viable
 var gain_health_timer_ongoing : bool = false
 var health_gain_rate = 1 # must divide evenly into 11, so only 1 is viable
 
-@onready var clock: AnimatedSprite2D = $Clock
+@onready var clock: AnimatedSprite2D = $Node/Clock
 
 #dictionaries
 var State = { "Work": 0, "Coffee": 1, "Sleep": 2 }

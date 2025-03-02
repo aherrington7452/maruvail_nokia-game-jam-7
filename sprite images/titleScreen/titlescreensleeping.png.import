@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnw6i170fu3na"
-path="res://.godot/imported/clock_animation.png-8083d7f0b6953f8a6acce6b4a37e1473.ctex"
+uid="uid://da6d3hyrrelu7"
+path="res://.godot/imported/titlescreensleeping.png-4cc3fd78022af9fa1ef0c15055eb1d74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite images/clock_animation.png"
-dest_files=["res://.godot/imported/clock_animation.png-8083d7f0b6953f8a6acce6b4a37e1473.ctex"]
+source_file="res://sprite images/titleScreen/titlescreensleeping.png"
+dest_files=["res://.godot/imported/titlescreensleeping.png-4cc3fd78022af9fa1ef0c15055eb1d74.ctex"]
 
 [params]
 

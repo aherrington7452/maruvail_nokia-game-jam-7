@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://pstqes7jcym2"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xi8ql"]
-[ext_resource type="PackedScene" uid="uid://c1ghgv40hy0xi" path="res://scene/work_station_total.tscn" id="2_6bujo"]
+[ext_resource type="PackedScene" uid="uid://cyss75qcl81w" path="res://scene/title_screen.tscn" id="2_k3m8r"]
 [ext_resource type="Shader" path="res://assets/shaders/nokia-3310.gdshader" id="3_ekjb8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l502v"]
@@ -29,7 +29,9 @@ snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
 size = Vector2i(84, 48)
 
-[node name="WorkStationTotal" parent="Screen" instance=ExtResource("2_6bujo")]
+[node name="Node" type="Node" parent="Screen"]
+
+[node name="TitleScreen" parent="Screen/Node" instance=ExtResource("2_k3m8r")]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 unique_name_in_owner = true

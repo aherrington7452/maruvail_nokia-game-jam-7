@@ -1,7 +1,7 @@
 [gd_scene load_steps=156 format=3 uid="uid://chq7q4ec0a3li"]
 
 [ext_resource type="Script" path="res://scripts/scr_work_station.gd" id="1_0a8c3"]
-[ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/day_counter_ani.png" id="2_tlhmq"]
+[ext_resource type="Texture2D" uid="uid://ddchk14xmuhp" path="res://sprite images/clock/day_counter_ani.png" id="2_tlhmq"]
 [ext_resource type="Texture2D" uid="uid://ddvn6q7mbi6jk" path="res://sprite images/cat/drinking_animation_bare.png" id="9_of765"]
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
 [ext_resource type="Texture2D" uid="uid://s5l8cf58plxd" path="res://sprite images/cat/sleeping_animation.png" id="10_pkvy2"]
@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://q5fqs1ib6faa" path="res://sprite images/heart_inner_ani.png" id="12_ibvke"]
 [ext_resource type="Texture2D" uid="uid://8ayplsjgr11s" path="res://sprite images/states/coffee_animation.png" id="12_mp3it"]
 [ext_resource type="Texture2D" uid="uid://bsdmj0ultnxp6" path="res://sprite images/states/work_bar_animation_full.png" id="12_vpi4a"]
-[ext_resource type="Texture2D" uid="uid://cnw6i170fu3na" path="res://sprite images/clock_animation.png" id="13_ew5o5"]
+[ext_resource type="Texture2D" uid="uid://cnw6i170fu3na" path="res://sprite images/clock/clock_animation.png" id="13_ew5o5"]
 [ext_resource type="Texture2D" uid="uid://jfvxacdxgke1" path="res://sprite images/cat/cat_BG.png" id="13_wcjkg"]
-[ext_resource type="Texture2D" uid="uid://dr7xat2hw004h" path="res://sprite images/timer_colon.png" id="14_tasil"]
+[ext_resource type="Texture2D" uid="uid://dr7xat2hw004h" path="res://sprite images/clock/timer_colon.png" id="14_tasil"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbxxp"]
 atlas = ExtResource("2_tlhmq")
@@ -1034,93 +1034,95 @@ animations = [{
 [node name="WorkStationUI" type="Node2D"]
 script = ExtResource("1_0a8c3")
 
-[node name="DayCounter" type="AnimatedSprite2D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="DayCounter" type="AnimatedSprite2D" parent="Node"]
 position = Vector2(11, 5)
 sprite_frames = SubResource("SpriteFrames_olmsm")
 autoplay = "default"
 frame_progress = 0.429467
 
-[node name="Clock" type="AnimatedSprite2D" parent="."]
+[node name="Clock" type="AnimatedSprite2D" parent="Node"]
 position = Vector2(11, 11)
 sprite_frames = SubResource("SpriteFrames_u6t1a")
 autoplay = "default"
 frame_progress = 0.387598
 
-[node name="Clock Colon" type="AnimatedSprite2D" parent="Clock"]
+[node name="ClockColon" type="AnimatedSprite2D" parent="Node/Clock"]
 sprite_frames = SubResource("SpriteFrames_535rl")
 autoplay = "default"
 frame_progress = 0.913456
 
-[node name="State" type="Node" parent="."]
+[node name="State" type="Node" parent="Node"]
 
-[node name="Bars" type="AnimatedSprite2D" parent="State"]
+[node name="Bars" type="AnimatedSprite2D" parent="Node/State"]
 position = Vector2(69, 8)
 sprite_frames = SubResource("SpriteFrames_fadlw")
 animation = &"work"
 autoplay = "work"
 
-[node name="ActiveOutline" type="AnimatedSprite2D" parent="State"]
+[node name="ActiveOutline" type="AnimatedSprite2D" parent="Node/State"]
 position = Vector2(69, 8)
 sprite_frames = SubResource("SpriteFrames_mfdv3")
 animation = &"active"
 autoplay = "active"
 
-[node name="WorkCat" type="AnimatedSprite2D" parent="."]
+[node name="WorkCat" type="AnimatedSprite2D" parent="Node"]
 position = Vector2(18, 32)
 sprite_frames = SubResource("SpriteFrames_iqutr")
 animation = &"work"
 autoplay = "work"
 frame_progress = 0.948907
 
-[node name="Desk" type="Sprite2D" parent="WorkCat"]
+[node name="Desk" type="Sprite2D" parent="Node/WorkCat"]
 position = Vector2(7, 5)
 texture = ExtResource("12_5ight")
 
-[node name="BG" type="Sprite2D" parent="WorkCat"]
+[node name="BG" type="Sprite2D" parent="Node/WorkCat"]
 z_index = -1
 position = Vector2(24, 0)
 scale = Vector2(2.6, 1)
 texture = ExtResource("13_wcjkg")
 
-[node name="HealthOutline" type="Sprite2D" parent="."]
+[node name="HealthOutline" type="Sprite2D" parent="Node"]
 position = Vector2(39, 8)
 texture = ExtResource("11_4iboh")
 
-[node name="HealthInner" type="AnimatedSprite2D" parent="HealthOutline"]
+[node name="HealthInner" type="AnimatedSprite2D" parent="Node/HealthOutline"]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_tqedy")
 autoplay = "default"
 frame_progress = 0.368647
 
-[node name="ClockTimer" type="Timer" parent="."]
+[node name="ClockTimer" type="Timer" parent="Node"]
 wait_time = 2.0
 autostart = true
 
-[node name="CoffeeTimer" type="Timer" parent="."]
+[node name="CoffeeTimer" type="Timer" parent="Node"]
 wait_time = 0.5
 
-[node name="WorkTimer" type="Timer" parent="."]
+[node name="WorkTimer" type="Timer" parent="Node"]
 wait_time = 4.0
 one_shot = true
 
-[node name="SleepTimer" type="Timer" parent="."]
+[node name="SleepTimer" type="Timer" parent="Node"]
 wait_time = 2.0
 
-[node name="DrainEnergyTimer" type="Timer" parent="."]
+[node name="DrainEnergyTimer" type="Timer" parent="Node"]
 one_shot = true
 
-[node name="DrainHealthTimer" type="Timer" parent="."]
+[node name="DrainHealthTimer" type="Timer" parent="Node"]
 wait_time = 5.0
 one_shot = true
 
-[node name="GainHealthTimer" type="Timer" parent="."]
+[node name="GainHealthTimer" type="Timer" parent="Node"]
 wait_time = 3.0
 one_shot = true
 
-[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
-[connection signal="timeout" from="CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
-[connection signal="timeout" from="WorkTimer" to="." method="_on_work_timer_timeout"]
-[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
-[connection signal="timeout" from="DrainEnergyTimer" to="." method="_on_drain_energy_timer_timeout"]
-[connection signal="timeout" from="DrainHealthTimer" to="." method="_on_drain_health_timer_timeout"]
-[connection signal="timeout" from="GainHealthTimer" to="." method="_on_gain_health_timer_timeout"]
+[connection signal="timeout" from="Node/ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="timeout" from="Node/CoffeeTimer" to="." method="_on_coffee_timer_timeout"]
+[connection signal="timeout" from="Node/WorkTimer" to="." method="_on_work_timer_timeout"]
+[connection signal="timeout" from="Node/SleepTimer" to="." method="_on_sleep_timer_timeout"]
+[connection signal="timeout" from="Node/DrainEnergyTimer" to="." method="_on_drain_energy_timer_timeout"]
+[connection signal="timeout" from="Node/DrainHealthTimer" to="." method="_on_drain_health_timer_timeout"]
+[connection signal="timeout" from="Node/GainHealthTimer" to="." method="_on_gain_health_timer_timeout"]

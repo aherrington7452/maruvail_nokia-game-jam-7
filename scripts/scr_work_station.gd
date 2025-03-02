@@ -76,9 +76,13 @@ func drain_health():
 			drain_health_timer.start(drain_health_timer.wait_time)
 
 func health_animation():
+	#CONTAINS BURNOUT ENDING
 	health_inner.frame = StateValue["Health"]
+	# BURNOUT: End game if no health
 	if StateValue["Health"] == health_max_frames:
-		pass #TODO end game by BURNOUT
+		var scene = preload("res://scene/burnout.tscn").instantiate()
+		get_parent().add_child(scene)
+		queue_free()
 
 func drain_energy():
 	if current_state == State.Work:

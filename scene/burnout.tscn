@@ -1,0 +1,138 @@
+[gd_scene load_steps=20 format=3 uid="uid://bot6p2kjxvejl"]
+
+[ext_resource type="Texture2D" uid="uid://dbmuh1kqli0e" path="res://sprite images/heart/heartexpload.png" id="1_hdyhb"]
+[ext_resource type="Script" path="res://scripts/burnout.gd" id="1_mn0nc"]
+[ext_resource type="Texture2D" uid="uid://bdwu40jghp1mq" path="res://sprite images/GameOverBurnout.png" id="3_styyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yixkk"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2l3a"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(84, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dctq"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(168, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvi78"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(252, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2083e"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(336, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5htfc"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(420, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un8pd"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(0, 48, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuoxv"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(84, 48, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6annc"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(168, 48, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0kt"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(252, 48, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg63m"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(336, 48, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c34nx"]
+atlas = ExtResource("1_hdyhb")
+region = Rect2(420, 48, 84, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b74lx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yixkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2l3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dctq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvi78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2083e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5htfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un8pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuoxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6annc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn0kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg63m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c34nx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmb4y"]
+atlas = ExtResource("3_styyj")
+region = Rect2(0, 0, 84, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyvs0"]
+atlas = ExtResource("3_styyj")
+region = Rect2(84, 0, 84, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0v6gq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmb4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyvs0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Burnout" type="Node2D"]
+script = ExtResource("1_mn0nc")
+
+[node name="Heart" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, 24)
+sprite_frames = SubResource("SpriteFrames_b74lx")
+autoplay = "default"
+frame = 11
+frame_progress = 1.0
+
+[node name="GameOver" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(42, 24)
+sprite_frames = SubResource("SpriteFrames_0v6gq")
+autoplay = "default"
+frame_progress = 0.685378
+
+[connection signal="animation_finished" from="Heart" to="." method="_on_heart_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cyss75qcl81w"]
 
-[ext_resource type="Script" path="res://scene/title_screen.gd" id="1_4lnxg"]
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_4lnxg"]
 [ext_resource type="Texture2D" uid="uid://da6d3hyrrelu7" path="res://sprite images/titleScreen/titlescreensleeping.png" id="2_ipfus"]
 [ext_resource type="Texture2D" uid="uid://cxbxa614eytjg" path="res://sprite images/titleScreen/titlescreenAwake.png" id="2_nqtjh"]
 

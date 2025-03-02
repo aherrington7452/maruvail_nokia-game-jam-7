@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c3uf4mgtgm06m" path="res://sprite images/states/selection_animation.png" id="10_17pts"]
 [ext_resource type="Texture2D" uid="uid://s5l8cf58plxd" path="res://sprite images/cat/sleeping_animation.png" id="10_pkvy2"]
 [ext_resource type="Texture2D" uid="uid://b1vtnt8py6qnt" path="res://sprite images/states/battery_animation.png" id="10_xb5ia"]
-[ext_resource type="Texture2D" uid="uid://wsmlfwl5ijnw" path="res://sprite images/heart_outline.png" id="11_4iboh"]
+[ext_resource type="Texture2D" uid="uid://wsmlfwl5ijnw" path="res://sprite images/heart/heart_outline.png" id="11_4iboh"]
 [ext_resource type="Texture2D" uid="uid://ca0mhugqyx13b" path="res://sprite images/cat/working_animation_bare.png" id="11_fblcy"]
 [ext_resource type="Texture2D" uid="uid://c1ajt01c62km" path="res://sprite images/cat/desk_bare.png" id="12_5ight"]
-[ext_resource type="Texture2D" uid="uid://q5fqs1ib6faa" path="res://sprite images/heart_inner_ani.png" id="12_ibvke"]
+[ext_resource type="Texture2D" uid="uid://q5fqs1ib6faa" path="res://sprite images/heart/heart_inner_ani.png" id="12_ibvke"]
 [ext_resource type="Texture2D" uid="uid://8ayplsjgr11s" path="res://sprite images/states/coffee_animation.png" id="12_mp3it"]
 [ext_resource type="Texture2D" uid="uid://bsdmj0ultnxp6" path="res://sprite images/states/work_bar_animation_full.png" id="12_vpi4a"]
 [ext_resource type="Texture2D" uid="uid://cnw6i170fu3na" path="res://sprite images/clock/clock_animation.png" id="13_ew5o5"]
@@ -1112,7 +1112,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="DrainHealthTimer" type="Timer" parent="Node"]
-wait_time = 5.0
 one_shot = true
 
 [node name="GainHealthTimer" type="Timer" parent="Node"]

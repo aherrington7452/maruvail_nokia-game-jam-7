@@ -26,7 +26,7 @@ var energy_drain_rate = 1 # must divide evenly into 18
 
 @onready var drain_health_timer: Timer = $DrainHealthTimer
 @onready var gain_health_timer: Timer = $GainHealthTimer
-@onready var health_inner: AnimatedSprite2D = $Health/HealthInner
+@onready var health_inner: AnimatedSprite2D = $HealthOutline/HealthInner
 var health_max_frames = 11 # 12 total
 var drain_health_timer_ongoing : bool = false
 var health_drain_rate = 1 # must divide evenly into 11, so only 1 is viable

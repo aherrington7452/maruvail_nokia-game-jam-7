@@ -1323,9 +1323,8 @@ autoplay = "active"
 [node name="WorkCat" type="AnimatedSprite2D" parent="Node"]
 position = Vector2(18, 32)
 sprite_frames = SubResource("SpriteFrames_iqutr")
-animation = &"work"
+animation = &"coffee"
 autoplay = "work"
-frame_progress = 0.948907
 
 [node name="Desk" type="Sprite2D" parent="Node/WorkCat"]
 position = Vector2(7, 5)
@@ -1348,14 +1347,14 @@ autoplay = "default"
 frame_progress = 0.368647
 
 [node name="ClockTimer" type="Timer" parent="Node"]
-wait_time = 4.0
+wait_time = 3.0
 autostart = true
 
 [node name="CoffeeTimer" type="Timer" parent="Node"]
 wait_time = 0.5
 
 [node name="WorkTimer" type="Timer" parent="Node"]
-wait_time = 3.0
+wait_time = 2.5
 one_shot = true
 
 [node name="SleepTimer" type="Timer" parent="Node"]
@@ -1369,7 +1368,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="GainHealthTimer" type="Timer" parent="Node"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Tutorial" type="AnimatedSprite2D" parent="Node"]
@@ -1380,6 +1379,7 @@ frame = 39
 frame_progress = 1.0
 
 [node name="DrainHealthTimerCoffee" type="Timer" parent="Node"]
+wait_time = 2.0
 
 [connection signal="timeout" from="Node/ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="Node/CoffeeTimer" to="." method="_on_coffee_timer_timeout"]

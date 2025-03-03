@@ -3,7 +3,7 @@ extends Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _process(_delta) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("interact2"):
 		animated_sprite_2d.play("awake")
 	if Input.is_action_just_pressed("move_up"):
 		animated_sprite_2d.play("sleeping")

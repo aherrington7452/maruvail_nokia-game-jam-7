@@ -36,6 +36,7 @@ var gain_health_timer_ongoing : bool = false
 var health_gain_rate = 1 # must divide evenly into 11, so only 1 is viable
 
 @onready var clock: AnimatedSprite2D = $Node/Clock
+var clock_max_frames = 36 # 37 total
 
 #dictionaries
 var State = { "Work": 0, "Coffee": 1, "Sleep": 2, "None": 3 }
@@ -61,6 +62,23 @@ func _process(_delta) -> void:
 	health_animation()
 	label_animation()
 	cat_animation()
+	
+	check_work()
+	check_time()
+
+func check_time():
+	# ENDS GAME: FIRED
+	if clock.frame == clock_max_frames:
+		var scene = preload("res://scene/fired.tscn").instantiate()
+		get_parent().add_child(scene)
+		queue_free()
+
+func check_work():
+	# ENDS GAME: PROMOTION
+	if StateValue["Work"] == work_bar_max_frames:
+		var scene = preload("res://scene/promotion.tscn").instantiate()
+		get_parent().add_child(scene)
+		queue_free()
 
 func gain_health():
 	if current_state == State.Sleep:
@@ -108,7 +126,7 @@ func player_input():
 		elif current_selection_state == 0:
 			current_selection_state = 2
 	if player_sleeping == false:
-		if Input.is_action_just_pressed("interact"):
+		if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("interact2"):
 			current_state = current_selection_state
 			if current_state == State.Sleep:
 				player_sleeping = true
@@ -124,6 +142,8 @@ func update_bar_progress():
 			#pause all other bar timers, resume draining energy
 			drain_energy_timer.paused = false
 			gain_health_timer.paused = true
+			drain_health_timer.paused = false
+			drain_health_timer_coffee.paused = true
 			coffee_timer.paused = true
 			sleep_timer.paused = true
 			work_timer.paused = false
@@ -134,6 +154,8 @@ func update_bar_progress():
 	if current_state == State.Coffee:
 		drain_energy_timer.paused = true
 		gain_health_timer.paused = true
+		drain_health_timer.paused = true
+		drain_health_timer_coffee.paused = false
 		work_timer.paused = true
 		sleep_timer.paused = true
 		coffee_timer.paused = false
@@ -147,6 +169,8 @@ func update_bar_progress():
 			player_sleeping = false
 		drain_energy_timer.paused = true
 		gain_health_timer.paused = false
+		drain_health_timer.paused = true
+		drain_health_timer_coffee.paused = true
 		work_timer.paused = true
 		coffee_timer.paused = true
 		sleep_timer.paused = false
@@ -187,7 +211,8 @@ func cat_animation():
 		work_cat_animation.play("sleep")
 
 func _on_clock_timer_timeout() -> void:
-	clock.frame += 1
+	if clock.frame < clock_max_frames:
+		clock.frame += 1
 
 func _on_work_timer_timeout() -> void:
 	work_timer_ongoing = false

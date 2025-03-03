@@ -19,7 +19,6 @@ shader_parameter/screen = SubResource("ViewportTexture_l502v")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xi8ql")
-palette = 2
 
 [node name="Screen" type="SubViewport" parent="."]
 unique_name_in_owner = true
